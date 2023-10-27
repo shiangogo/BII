@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name("string-util")
   .description("CLI to some JavaScript string utilities")
-  .version("0.8.0");
+  .version("0.0.1");
 
 program
   .argument("<string>", "string to log")
@@ -20,8 +20,9 @@ program
 
 program
   .command("add <numbers...>")
-  .action((numbers: number[]) => {
-    const total = numbers.reduce((a, b) => a + b, 0);
+  .action((numbers: string[]) => {
+    const numericNumbers = numbers.map(Number);
+    const total = numericNumbers.reduce((a: number, b: number) => a + b, 0);
     console.log(`Total: ${total}`);
   })
   .description("Add numbers and log the total");
